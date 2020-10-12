@@ -1,5 +1,5 @@
 
-VERSION ?= 'v0.4.2'
+VERSION ?= 'v0.4.3'
 TARBALL_NAME ?= portable-ansible-$(VERSION)
 
 
@@ -7,7 +7,7 @@ TARBALL_NAME ?= portable-ansible-$(VERSION)
 clean:
 	@ echo "[INFO] Cleaning directory:" $(shell pwd)/target
 	@ rm -rf \
-		$(shell pwd)/target 
+		$(shell pwd)/target
 
 
 .PHONY: post-clean
@@ -25,7 +25,7 @@ post-clean:
 
 
 .PHONY: deps
-deps: 
+deps:
 	@ mkdir -p $(shell pwd)/target/ansible/ && \
 		cp $(shell pwd)/templates/__main__.py $(shell pwd)/target/ansible/
 	@ mkdir -p $(shell pwd)/target/ansible/extras/
@@ -81,7 +81,7 @@ prepare-in-docker-py3:
 						setuptools && \
 					cd /data && make prepare-py3 && make post-clean"
 
-.PHONY: tarball-py2 
+.PHONY: tarball-py2
 tarball-py2: prepare-in-docker-py2
 	@ echo '[INFO] Building tarball' && \
 		mkdir -p $(shell pwd)/builds && \
@@ -96,4 +96,4 @@ tarball-py3: prepare-in-docker-py3
 
 .PHONY: tarballs
 tarballs: tarball-py2 tarball-py3
-	@ echo '[INFO] Completed' 
+	@ echo '[INFO] Completed'
